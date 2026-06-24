@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Storno-Sammelliste (alle Zelte)",
+    "url": "https://wiesnkini.de/oktoberfest-reservierungen/freie-reservierungen/",
+    "kind": "aggregator",
+    "note": "Wichtigste Quelle: listet frei werdende Reservierungen ALLER Zelte an einem Ort."
+  },
+
+  {
+    "name": "Schützen-Festzelt",
+    "url": "https://reservierung.schuetzenfestzelt.com/reservation",
+    "kind": "portal_spa"
+  },
+  {
+    "name": "Schottenhamel-Festhalle",
+    "url": "https://reservierung.festhalle-schottenhamel.de/reservation/",
+    "kind": "portal_spa"
+  },
+  {
+    "name": "Paulaner Festzelt (Winzerer Fähndl)",
+    "url": "https://reservierung.paulanerfestzelt.de/",
+    "kind": "portal_spa"
+  },
+  {
+    "name": "Fischer-Vroni",
+    "url": "https://reservierung.fischer-vroni.de/reservation",
+    "kind": "portal_spa"
+  },
+
+  {
+    "name": "Hofbräu-Festzelt",
+    "url": "https://www.hb-festzelt.de/reservierungen.html",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Hacker-Festzelt",
+    "url": "https://hacker-festzelt.de/reservierung/",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Löwenbräu-Festzelt",
+    "url": "https://www.loewenbraeuzelt.de/reservierungen/",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Pschorr-Bräurosl",
+    "url": "https://www.braeurosl.de/reservieren",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Ochsenbraterei (Spaten)",
+    "url": "https://www.ochsenbraterei.de/reservierung/",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Marstall Festzelt",
+    "url": "https://www.marstall-oktoberfest.de/reservieren.html",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Armbrustschützen-Festzelt",
+    "url": "https://www.armbrustschuetzenzelt.de/reservierung/reservierungsanfrage/",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Augustiner-Festhalle (meist nur Stammgäste)",
+    "url": "https://www.festhalle-augustiner.com/reservierung/",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Käfer Wies'n-Schänke",
+    "url": "https://www.feinkost-kaefer.de/wiesn-schaenke",
+    "kind": "portal_static"
+  },
+  {
+    "name": "Kufflers Weinzelt",
+    "url": "https://www.weinzelt.com/de/reservierung/",
+    "kind": "portal_static"
+  }
+]

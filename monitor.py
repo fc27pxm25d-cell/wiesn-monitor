@@ -40,7 +40,11 @@ TENTS_FILE = HERE / "tents.json"
 STATE_FILE = HERE / "state.json"
 
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+# Mehrere Ziele möglich: deine private chat_id + optional ein Read-only-Kanal
+# (z. B. um Kumpels ohne Zugriff auf deine sonstigen Chats mitlesen zu lassen).
+# Kommagetrennt in TELEGRAM_CHAT_ID, z. B. "123456,-1004292845424".
+TELEGRAM_CHAT_IDS = [c.strip() for c in
+                      os.environ.get("TELEGRAM_CHAT_ID", "").split(",") if c.strip()]
 
 HTTP_HEADERS = {
     "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -122,23 +126,25 @@ def load_json(path, default):
 
 
 def send_telegram(text):
-    """Schickt eine Nachricht; ohne Konfiguration nur Ausgabe in der Konsole."""
-    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
+    """Schickt eine Nachricht an alle konfigurierten Ziele (privater Chat +
+    optional Read-only-Kanal); ohne Konfiguration nur Ausgabe in der Konsole."""
+    if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_IDS:
         print("[i] Telegram nicht konfiguriert — Nachricht nur in der Konsole:\n")
         print(text)
         return
     api = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    try:
-        r = requests.post(api, timeout=20, data={
-            "chat_id": TELEGRAM_CHAT_ID,
-            "text": text,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": "false",
-        })
-        if r.status_code != 200:
-            print(f"[WARN] Telegram-Fehler {r.status_code}: {r.text[:200]}")
-    except Exception as e:
-        print(f"[WARN] Telegram-Exception: {e}")
+    for chat_id in TELEGRAM_CHAT_IDS:
+        try:
+            r = requests.post(api, timeout=20, data={
+                "chat_id": chat_id,
+                "text": text,
+                "parse_mode": "HTML",
+                "disable_web_page_preview": "false",
+            })
+            if r.status_code != 200:
+                print(f"[WARN] Telegram-Fehler ({chat_id}) {r.status_code}: {r.text[:200]}")
+        except Exception as e:
+            print(f"[WARN] Telegram-Exception ({chat_id}): {e}")
 
 
 def format_alerts(alerts):
